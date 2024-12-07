@@ -22,7 +22,7 @@ const transporter = nodemailer.createTransport({
 const sendSMS = async (donor, recipientName) => {
   try {
     return await client.messages.create({
-      body: `Hello ${donor.PatientName}, I hope you are fine. Urgent blood is needed for recipient ${recipientName}. Please help us save their life by donating blood. For queries, contact +917000577419.`,
+      body: `Hello ${donor.PatientName},\n\nAn urgent blood donation is needed for recipient ${recipientName}. Please help us save a life.\n\n You can register from the below link \n https://donor123.netlify.app  Contact +917000577419 for more details.\n\nThank you for your generosity.`,
       from: "+19549511315", // Replace with your Twilio phone number
       to: donor.PhoneNumber, // Assuming donor.PhoneNumber contains the phone number
     });
@@ -39,7 +39,7 @@ const sendEmail = async (name,donor, recipientName) => {
       from: '"Blood Donor Service" <your-email@gmail.com>', // Replace with your email
       to: donor.email, // Assuming donor.Email contains the email address
       subject: `${name} HOSPITAL - UREGNT BLOOD DONATION`,
-      text: `Hello ${donor.PatientName},\n\nAn urgent blood donation is needed for recipient ${recipientName}. Please help us save a life. Contact +917000577419 for more details.\n\nThank you for your generosity.`,
+      text: `Hello ${donor.PatientName},\n\nAn urgent blood donation is needed for recipient ${recipientName}. Please help us save a life.\n\n You can register from the below link \n https://donor123.netlify.app  Contact +917000577419 for more details.\n\nThank you for your generosity.`,
     });
   } catch (error) {
     console.error(`Error sending email to ${donor.Email}:`, error);
